@@ -1,7 +1,20 @@
-// var _ = require('lodash'),
-//  CodeShip = require('..');
-//  CodeShipLib = require('../lib/CodeShipHTTP');
-//  require('should');
+var _ = require('lodash'),
+ SportsData = require('..');
+ require('should');
+
+describe('test', function () {
+  it('should return a player', function(done) {
+    var sportsData = new SportsData({
+      apiKey :process.env.API_KEY
+    });
+
+    sportsData.player("2cfe41eb-a26d-45b0-8b7c-22536e59db28",function(response) {
+      response.player.id.should.be.exactly('2cfe41eb-a26d-45b0-8b7c-22536e59db28');
+      response.player.last_name.should.be.exactly('Souza Jr.');
+      done();
+    });
+  })
+})
 
 // describe('Code ship ci api test suite', function () {
 //   it('expects an api key', function () {
